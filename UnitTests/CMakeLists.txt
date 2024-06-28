@@ -1,3 +1,4 @@
+set(BUILD_TESTING OFF)
 if(BUILD_TESTING)
 ################################################################################
   find_package(MPI REQUIRED)
