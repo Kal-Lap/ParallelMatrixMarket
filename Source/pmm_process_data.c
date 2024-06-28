@@ -178,31 +178,42 @@ int PMM_ExtractData(char *raw_text, PMM_Header header, PMM_Data *data,
   }
 
   /* Allocate The Data*/
-  data->rows = (long int *)malloc(data->number_of_values * sizeof(long int));
-  if (data->rows == NULL) {
-    perror("Extract Data Malloc");
-    return EXIT_FAILURE;
-  }
-  data->columns = (long int *)malloc(data->number_of_values * sizeof(long int));
-  if (data->columns == NULL) {
-    perror("Extract Data Malloc");
-    return EXIT_FAILURE;
-  }
-  if (header.data_type == REAL) {
-    data->values = (void *)malloc(data->number_of_values * sizeof(double));
-    dbl_value_ptr = data->values;
-  } else if (header.data_type == INTEGER) {
-    data->values = (void *)malloc(data->number_of_values * sizeof(double));
-    int_value_ptr = data->values;
-  } else if (header.data_type == COMPLEX) {
-    data->values = (void *)malloc(2 * data->number_of_values * sizeof(double));
-    dbl_value_ptr = data->values;
-  }
-  if (header.data_type != PATTERN && data->values == NULL) {
-    perror("Extract Data Malloc");
-    return EXIT_FAILURE;
+  if (header.data_type == PATTERN) {
+    /***** MODIFIED ******/
+    //let's read into an array of struct directly
+    data->edgelist = malloc(data->number_of_values * sizeof(edge));
+    if (data->edgelist == NULL) {
+      perror("Extract Data Malloc");
+      return EXIT_FAILURE;
+    }
+    /*********************/
+  }else{ 
+    data->rows = (long int *)malloc(data->number_of_values * sizeof(long int));
+    if (data->rows == NULL) {
+      perror("Extract Data Malloc");
+      return EXIT_FAILURE;
+    }
+    data->columns = (long int *)malloc(data->number_of_values * sizeof(long int));
+    if (data->columns == NULL) {
+      perror("Extract Data Malloc");
+      return EXIT_FAILURE;
+    }
+    if (header.data_type == REAL) {
+      data->values = (void *)malloc(data->number_of_values * sizeof(double));
+      dbl_value_ptr = data->values;
+    } else if (header.data_type == INTEGER) {
+      data->values = (void *)malloc(data->number_of_values * sizeof(double));
+      int_value_ptr = data->values;
+    } else if (header.data_type == COMPLEX) {
+      data->values = (void *)malloc(2 * data->number_of_values * sizeof(double));
+      dbl_value_ptr = data->values;
+    }
+    if (header.data_type != PATTERN && data->values == NULL) {
+      perror("Extract Data Malloc");
+      return EXIT_FAILURE;
   }
 
+}
   /* Extract The Data */
   search_pointer = raw_text;
   temporary_line = strtok(search_pointer, "\n");
@@ -221,8 +232,12 @@ int PMM_ExtractData(char *raw_text, PMM_Header header, PMM_Data *data,
                    &(data->columns[i]), &(dbl_value_ptr[2 * i]),
                    &(dbl_value_ptr[2 * i + 1]));
       } else if (header.data_type == PATTERN) {
-        elements_read = sscanf(temporary_line, "%ld %ld", &(data->rows[i]),
-                               &(data->columns[i]));
+        /******Modified******/
+        // elements_read = sscanf(temporary_line, "%ld %ld", &(data->rows[i]),
+        //                        &(data->columns[i]));
+        elements_read = sscanf(temporary_line, "%ld %ld", &(data->edgelist[i].row),
+                    &(data->edgelist[i].col));
+        /********************/
       }
     } else if (header.format == ARRAY) {
       if (header.data_type == REAL) {

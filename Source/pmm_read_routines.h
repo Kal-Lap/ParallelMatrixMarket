@@ -7,6 +7,7 @@
 #include "pmm_data.h"
 #include "pmm_header.h"
 #include <stdlib.h>
+#include <mpi.h>
 
 /******************************************************************************/
 /*! PMM_ReadHeader
