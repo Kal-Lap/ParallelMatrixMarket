@@ -1,5 +1,6 @@
 ################################################################################
-## Basic Setup
+
+# Basic Setup
 cmake_minimum_required (VERSION 3.1)
 project(ParallelMatrixMarket)
 set(CMAKE_VERBOSE_MAKEFILE ON)
