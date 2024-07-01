@@ -36,7 +36,7 @@ typedef struct {
       If the data is complex, the real and imaginary part are stored one after
       another.
   */
-  void* values;
+  double* values;
 } PMM_Data;
 
 /******************************************************************************/
