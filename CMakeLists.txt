@@ -5,13 +5,13 @@ project(ParallelMatrixMarket)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
 set(src
-    Source/pmm_constants.c
-    Source/pmm_data.c Source/pmm_data.h
+    Source/pmm_constants.h
+    Source/pmm_data.cpp Source/pmm_data.h
     Source/pmm_header.h
     Source/pmm_read_routines.h
-    Source/pmm_process_data.c
-    Source/pmm_process_header.c
-    Source/pmm_write_routines.c 
+    Source/pmm_process_data.cpp
+    Source/pmm_process_header.cpp
+    Source/pmm_write_routines.cpp
     Source/pmm_write_routines.h
 )
 
