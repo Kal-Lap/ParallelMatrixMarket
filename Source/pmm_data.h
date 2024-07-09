@@ -3,14 +3,8 @@
 */
 #ifndef PMM_DATA_h
 #define PMM_DATA_h
-
-/***** MODIFIED ******/
-//let's read into an array of struct directly
-typedef struct{
-    long int col;
-    long int row;
-} edge;
-/*********************/
+#include <vector>
+#include <utility>
 
 /******************************************************************************/
 /*!
@@ -31,7 +25,7 @@ typedef struct {
   /*! Column values. */
   long int* columns;
   /*! Edgelist values (col, row)*/
-  edge* edgelist;
+  std::vector<std::pair<unsigned long, unsigned long>> edgelist;
   /*! Value at a given row and column.
       If the data is complex, the real and imaginary part are stored one after
       another.

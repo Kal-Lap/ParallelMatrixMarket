@@ -182,11 +182,12 @@ int PMM_ExtractData(char *raw_text, PMM_Header header, PMM_Data *data,
   if (header.data_type == PATTERN) {
     /***** MODIFIED ******/
     //let's read into an array of struct directly
-    data->edgelist = (edge*)malloc(data->number_of_values * sizeof(edge));
-    if (data->edgelist == NULL) {
-      perror("Extract Data Malloc");
-      return EXIT_FAILURE;
-    }
+    // data->edgelist = (edge*)malloc(data->number_of_values * sizeof(edge));
+    // if (data->edgelist == NULL) {
+    //   perror("Extract Data Malloc");
+    //   return EXIT_FAILURE;
+    // }
+    data->edgelist.reserve(data->number_of_values);
     /*********************/
   }else{ 
     data->rows = (long int *)malloc(data->number_of_values * sizeof(long int));
@@ -236,8 +237,8 @@ int PMM_ExtractData(char *raw_text, PMM_Header header, PMM_Data *data,
         /******Modified******/
         // elements_read = sscanf(temporary_line, "%ld %ld", &(data->rows[i]),
         //                        &(data->columns[i]));
-        elements_read = sscanf(temporary_line, "%ld %ld", &(data->edgelist[i].row),
-                    &(data->edgelist[i].col));
+        elements_read = sscanf(temporary_line, "%lu %lu", &(data->edgelist[i].second),
+                    &(data->edgelist[i].first));
         /********************/
       }
     } else if (header.format == ARRAY) {
