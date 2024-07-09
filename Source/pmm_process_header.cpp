@@ -1,7 +1,6 @@
 /*! \file pmm_process_header.c
  \brief Implementation of header processing routines.
 */
-#include "pmm_constants.h"
 #include "pmm_read_routines.h"
 #include <mpi.h>
 #include <stdio.h>

@@ -2,7 +2,6 @@
  \brief Implementation of write to file routines.
 */
 #include "pmm_write_routines.h"
-#include "pmm_constants.h"
 
 #include <mpi.h>
 #include <stdio.h>
