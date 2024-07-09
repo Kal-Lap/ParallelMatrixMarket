@@ -187,7 +187,7 @@ int PMM_ExtractData(char *raw_text, PMM_Header header, PMM_Data *data,
     //   perror("Extract Data Malloc");
     //   return EXIT_FAILURE;
     // }
-    data->edgelist.reserve(data->number_of_values);
+    data->edgelist.resize(data->number_of_values);
     /*********************/
   }else{ 
     data->rows = (long int *)malloc(data->number_of_values * sizeof(long int));
