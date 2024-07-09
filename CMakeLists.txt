@@ -11,7 +11,11 @@ set(src
     Source/pmm_read_routines.h
     Source/pmm_process_data.cpp
     Source/pmm_process_header.cpp
+<<<<<<< HEAD
     Source/pmm_write_routines.cpp 
+=======
+    Source/pmm_write_routines.cpp
+>>>>>>> master
     Source/pmm_write_routines.h
 )
 

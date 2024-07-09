@@ -6,8 +6,9 @@
 #include <mpi.h>
 #include <stdio.h>
 #include <string.h>
+#include "pmm_constants.h"
 
-extern const int max_line_length;
+//extern const int max_line_length;
 
 /******************************************************************************/
 int PMM_ProcessInfoLine(const char *line, PMM_Header *header);

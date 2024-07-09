@@ -8,8 +8,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "pmm_constants.h"
 
-extern const int max_line_length;
+//extern const int max_line_length;
 
 /******************************************************************************/
 int PMM_CreateHeaderText(PMM_Header header, char **header_text);

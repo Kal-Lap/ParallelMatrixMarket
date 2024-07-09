@@ -11,7 +11,12 @@
 #include "pmm_data.h"
 #include "pmm_header.h"
 #include "pmm_constants.h"
+<<<<<<< HEAD
 extern const int max_line_length;
+=======
+
+//extern const int max_line_length;
+>>>>>>> master
 
 /******************************************************************************/
 int PMM_ExtractRawText(char *file_name, PMM_Header header, MPI_Comm comm,
@@ -161,7 +166,11 @@ int PMM_ExtractData(char *raw_text, PMM_Header header, PMM_Data *data,
   char *temporary_line;
   char *search_pointer;
   double *dbl_value_ptr;
+<<<<<<< HEAD
   double *int_value_ptr;
+=======
+  double *int_value_ptr; //MODIFIED FOR CXX: store int val in double
+>>>>>>> master
   long int i, j, total_processes;
   long int blank_lines;
   int elements_read;
@@ -181,12 +190,20 @@ int PMM_ExtractData(char *raw_text, PMM_Header header, PMM_Data *data,
   if (header.data_type == PATTERN) {
     /***** MODIFIED ******/
     //let's read into an array of struct directly
+<<<<<<< HEAD
     //data->edgelist = (edge *)malloc(data->number_of_values * sizeof(edge));
     data->edgelist.reserve(data->number_of_values);
     // if (data->edgelist == NULL) {
     //   perror("Extract Data Malloc");
     //   return EXIT_FAILURE;
     // }
+=======
+    data->edgelist = (edge*)malloc(data->number_of_values * sizeof(edge));
+    if (data->edgelist == NULL) {
+      perror("Extract Data Malloc");
+      return EXIT_FAILURE;
+    }
+>>>>>>> master
     /*********************/
   }else{ 
     data->rows = (long int *)malloc(data->number_of_values * sizeof(long int));

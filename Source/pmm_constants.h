@@ -5,7 +5,10 @@
 /*! > maximum line length of a matrix market file */
 #ifndef PMM_CONST_h
 #define PMM_CONST_h
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 
 const int max_line_length=1026;
 #endif
